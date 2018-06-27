@@ -40,15 +40,17 @@ While removing or commenting out this line
 
     response.init_db_pool()
 
-## Notes
+## File Handle Limits
 
 For `./multi_threaded.py` you may need to set your maximum open file handles to
 something like 50,000.
 
     $ ulimit -n 50000
 
-Clearly these are meant to be _minimal_ working examples. They demonstrate some
-socket programming techniques, and some concurrency techniques.  For instance,
+## Note
+
+These are meant to be _minimal_ working examples. They demonstrate some socket
+programming techniques, and some concurrency techniques.  For instance,
 `single_threaded_select.py` can handle thousands of requests per second with
 its concurrency technique, and it's only about 50 lines long. Given this, there
 are some things lacking in the code. Configuration could be done using a file,
