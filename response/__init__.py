@@ -29,6 +29,25 @@ def text_response(body):
                "").format(len(body)).encode('utf-8') + body
     return payload
 
+def html_response(body):
+    """Return an HTTP text/html response from binary *body*"""
+    payload = ("HTTP/1.1 200 OK\r\n"
+               "Connection: keep-alive\r\n"
+               "Content-Type: text/html\r\n"
+               "Content-Length: {}\r\n\r\n"
+               "").format(len(body)).encode('utf-8') + body
+    return payload
+
+def file_response(filepath):
+    """Return a text/plain response from *filepath*"""
+    body = open(filepath, 'rb').read()
+    return text_response(body)
+
+def html_file_response(filepath):
+    """Return a text/html response from *filepath*"""
+    body = open(filepath, 'rb').read()
+    return html_response(body)
+
 def read_random_file_segment():
     """Read a random 512 byte segment of 'bigfile'"""
     # First, create "bigfile" in this module's directory
@@ -57,7 +76,10 @@ You must have the UUID extension installed from postgresql-contrib.
 """
 
 """Initialize a PostgreSQL connection pool with up to 10000 connections"""
-dbpool = psycopg2.pool.ThreadedConnectionPool(1, 10000, "dbname=testdb user=root")
+dbpool = None
+def init_db_pool():
+    global dbpool
+    dbpool = psycopg2.pool.ThreadedConnectionPool(1, 10000, "dbname=testdb user=root")
 
 def query_random_uuids(conn):
     """Query for 10 random UUIDs by generating 10 random IDs locally"""

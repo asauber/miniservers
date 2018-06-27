@@ -9,6 +9,7 @@ from threading import Thread
 from queue import Queue
 
 import response
+response.init_db_pool()
 
 server_sock = sock.make_tcp_socket(int(sys.argv[1]))
 
