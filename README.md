@@ -42,6 +42,11 @@ While removing or commenting out this line
 
 ## Notes
 
+For `./multi_threaded.py` you may need to set your maximum open file handles to
+something like 50,000.
+
+    $ ulimit -n 50000
+
 Clearly these are meant to be _minimal_ working examples. They demonstrate some
 socket programming techniques, and some concurrency techniques.  For instance,
 `single_threaded_select.py` can handle thousands of requests per second with
