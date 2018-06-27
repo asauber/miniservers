@@ -45,13 +45,13 @@ While removing or commenting out this line
 Clearly these are meant to be _minimal_ working examples. They demonstrate some
 socket programming techniques, and some concurrency techniques.  For instance,
 `single_threaded_select.py` can handle thousands of requests per second with
-its concurrency technique and it's only about 50 lines long. Given this, there
+its concurrency technique, and it's only about 50 lines long. Given this, there
 are some things lacking in the code. Configuration could be done using a file,
 `argparse` could be used for a help message. Bare exception handling could be
-replace with something more fine-grained. The response loop for a client
+replaced with something more fine-grained. The response loop for a client
 connection could be turned into a decorator. The gevent version could be
-re-written using Python 3 asyncio coroutines. Go wild! All of these
-improvements, and more, can be done by you!
+re-written using Python 3 asyncio coroutines. All of these improvements, and
+more, can be done by you! Go wild!
 
 ### Copyright
 
