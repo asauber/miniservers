@@ -50,3 +50,5 @@ while True:
         break
 server_sock.close()
 
+for t in threads:
+    t.join()
